@@ -1,0 +1,95 @@
+--User_info_report
+
+select username, user_type_name, ui.action_user, ui.action_date_time
+from   user_info ui, user_type ut
+where  ui.user_type_id = ut.user_type_id 
+and    ui.user_type_id like nvl(:p_user_type_id, '%')
+order  by username ;
+
+
+--user_info report singular
+
+select user_type_name, username, user_image, ui.action_user "Created by", ui.ACTION_DATE_TIME "Creation Date"
+from   user_info ui, user_type ut
+where  ui.user_type_id = ut.user_type_id
+and    ui.user_type_id like nvl(:p_user_type_id, '%')
+order  by username ;
+
+
+--emp report tabular 
+
+select employee_id, first_name||' '||last_name Emp_Name, 
+       department_name, designation_name, join_date, salary
+from   employee e, department dp, designation ds
+where  e.department_id = dp.department_id
+and    e.designation_id = ds.designation_id
+and    e.designation_id like nvl(:p_designation_id, '%')
+order  by employee_id ;
+
+
+--emp cv style
+
+select first_name||' '||last_name "Name", department_name "Department", designation_name "Designation", father_name, mother_name, salary, join_date, NID, CELL_NUMBER, date_of_birth, gender, employee_image, nationality
+from   employee e, department d, designation de
+where  e.department_id = d.department_id
+and   e.designation_id = de.designation_id
+and   e.employee_id like nvl(:p_employee_id, '%')
+order  by employee_id ;
+
+
+--EMP_SC_DDD56_ML_1
+
+select employee_id, first_name||' '||last_name EMP_NAME, department_name DEPARTMENT, Salary
+from   employee e, department d
+where  e.department_id = d.department_id
+and    e.department_id like nvl(:p_department_id, '%')
+--and    e.department_id like nvl(:P_DEPARTMENT_ID, '%')
+order  by employee_id ;
+
+
+--DEPWS_EMP_SC_GA_1
+
+select d.department_id, department_name, employee_id, 
+       first_name||' '||last_name as employee_name,
+       designation_name, join_date, salary
+from   employee e, department d, designation g
+where  e.department_id = d.department_id
+and    e.designation_id = g.designation_id
+and    d.department_id like nvl(:p_department_id, '%')
+order  by department_id ;
+   
+
+--ADM_SC_DDD56_T_1
+
+select admission_id, first_name||' '||last_name Name, class_name, previous_class, gender, BIRTH_REG_NUMBER, ADMISSION_DATE
+from   admission ad, class c
+where  ad.class_id = c.class_id
+and      ad.class_id like nvl(:p_class_id, '%')
+order  by admission_id
+
+
+--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1 @@
+exp sc_ddd56/123@dbddd56 file=G:\Project\Others\Project_R_DTCM_56_M\School\Databackup\SC_DDD56_IT_HOME.DMP
